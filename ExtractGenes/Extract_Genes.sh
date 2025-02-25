@@ -11,26 +11,29 @@
 # Define the GTF file path
 GTF_FILE="/gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/References/Drosophila_melanogaster.BDGP6.28.102.gtf"
 
+# Define output directory
+OUTPUT_DIR="/gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/ExtractGenes/GeneLists"
+
 # X genes
-awk '{if ($1 == "X") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > X.chromosome.genes.tsv
+awk '{if ($1 == "X") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/X.chromosome.genes.tsv
 
 # Y genes
-awk '{if ($1 == "Y") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > Y.chromosome.genes.tsv
+awk '{if ($1 == "Y") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/Y.chromosome.genes.tsv
 
 # 2L genes
-awk '{if ($1 == "2L") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > 2L.chromosome.genes.tsv
+awk '{if ($1 == "2L") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/2L.chromosome.genes.tsv
 
 # 2R genes
-awk '{if ($1 == "2R") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > 2R.chromosome.genes.tsv
+awk '{if ($1 == "2R") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/2R.chromosome.genes.tsv
 
 # 3L genes
-awk '{if ($1 == "3L") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > 3L.chromosome.genes.tsv
+awk '{if ($1 == "3L") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/3L.chromosome.genes.tsv
 
 # 3R genes
-awk '{if ($1 == "3R") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > 3R.chromosome.genes.tsv
+awk '{if ($1 == "3R") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/3R.chromosome.genes.tsv
 
 # Mitochondrial genes
-awk '{if ($1 == "mitochondrion genome") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > mitochondrial.genes.tsv
+awk '{if ($1 == "mitochondrion genome") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/mitochondrial.genes.tsv
 
 # All genes (autosomes plus sex chromosomes)
-awk '{if ($1 == "X" || $1 == "Y" || $1 == "3R" || $1 == "3L" || $1 == "2R" || $1 == "2L" || $1 == "4") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > all.genes.tsv
+awk '{if ($1 == "X" || $1 == "Y" || $1 == "3R" || $1 == "3L" || $1 == "2R" || $1 == "2L" || $1 == "4") print $0;}' $GTF_FILE | awk '{print $10}' | sed 's/"//g' | sed 's/;//g' | uniq > $OUTPUT_DIR/all.genes.tsv
