@@ -3,15 +3,15 @@
 #SBATCH --time=2-0
 #SBATCH --mem=20G
 #SBATCH --job-name=MaleLimitedEvo_Reference_Genome
-#SBATCH -o /gpfs/home/rpr23sxu/Teaching/MaleLimitedEvo/FastQProcessing/GetReference/Output_Messages/MaleLimitedEvo_Reference_Genome.out
-#SBATCH -e /gpfs/home/rpr23sxu/Teaching/MaleLimitedEvo/FastQProcessing/GetReference/Error_Messages/MaleLimitedEvo_Reference_Genome.err
+#SBATCH -o /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Output_Messages/Get_Reference_Genome.out
+#SBATCH -e /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Error_Messages/Get_Reference_Genome.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rpr23sxu@uea.ac.uk
 
 # Required Output Directories:
-# - /gpfs/data/GrieshopLab/Karl/Transcriptomics/Output_Messages
-# - /gpfs/data/GrieshopLab/Karl/Transcriptomics/Error_Messages
-# - /gpfs/data/GrieshopLab/Karl/Transcriptomics/References
+# - /Output_Messages
+# - /Error_Messages
+# - /References
 
 # Required Input Files:
 # - None (the script downloads the necessary files)
@@ -22,7 +22,7 @@ module load bwa/0.7.17
 module load STAR/2.7.9a
 
 # Define output directory
-OUTPUT_DIR="/gpfs/home/rpr23sxu/Teaching/MaleLimitedEvo/FastQProcessing/GetReference/References"
+OUTPUT_DIR="/gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/References"
 REF_FILE="$OUTPUT_DIR/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa"
 REF_FILE_GZ="$REF_FILE.gz"
 GTF_FILE="$OUTPUT_DIR/Drosophila_melanogaster.BDGP6.28.102.gtf"
