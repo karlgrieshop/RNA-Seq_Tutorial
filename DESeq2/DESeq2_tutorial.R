@@ -31,11 +31,15 @@ if (!requireNamespace("vsn", quietly = TRUE)) {
 if (!requireNamespace("dplyr", quietly = TRUE)) {
   install.packages("dplyr")
 }
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
 
 # Load necessary libraries
 library(DESeq2)
 library(vsn)
 library(dplyr)
+library(ggplot2)
 
 ##########
 
@@ -115,12 +119,10 @@ DESeq.Analysis = DESeq(focal.contrast.filtered)
 # Get the results of that analysis
 DESeq.Results = results(DESeq.Analysis, contrast = factor.numerator.denominator, alpha = alpha.threshold, independentFiltering=T)
 
-# Remove Y genes and DsRed marker genes
-Ychr <- read.delim("~/Desktop/UofT/PRJ1/data/Y.chromosome.genes.tsv", sep = '\t', header = TRUE)
-DsRed_genes <- read.delim(file="~/Desktop/UofT/SSAV_RNA/Data/dmel_2R_DsRed_ids.tsv", header=FALSE)
+# Remove Y genes 
+Ychr <- read.delim("~/Documents/BIO UEA/Teaching/Module - Data Science and Bioinformatics/Session10/RNA-Seq_Tutorial/ExtractGenes/GeneLists/Y.chromosome.genes.tsv", sep = '\t', header = TRUE)
 DESeq.Results$FlyBaseID = rownames(DESeq.Results)
 DESeq.Results <- DESeq.Results[!(DESeq.Results$FlyBaseID %in% Ychr$geneID),]
-DESeq.Results <- DESeq.Results[!DESeq.Results$FlyBaseID %in% DsRed_genes$V1,]
 
 # Look at the metadata for DEseq's independent filtering 
 plot(metadata(DESeq.Results)$filterNumRej, type="b", ylab="number of rejections", xlab="quantiles of filter")
