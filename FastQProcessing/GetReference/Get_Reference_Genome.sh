@@ -2,7 +2,7 @@
 
 #SBATCH --time=2-0
 #SBATCH --mem=20G
-#SBATCH --job-name=MaleLimitedEvo_Reference_Genome
+#SBATCH --job-name=Get_Reference_Genome
 #SBATCH -o /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Output_Messages/Get_Reference_Genome.out
 #SBATCH -e /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Error_Messages/Get_Reference_Genome.err
 #SBATCH --mail-type=ALL
