@@ -19,7 +19,7 @@
 # Load all required modules
 module load samtools/1.16.1
 module load bwa/0.7.17
-module load STAR/2.7.9a
+module load STAR/2.7.10a
 
 # Define output directory
 OUTPUT_DIR="/gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/References"
