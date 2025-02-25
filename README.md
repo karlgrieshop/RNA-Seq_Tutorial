@@ -31,7 +31,7 @@ This directory contains the `Extract_Genes.sh` script, which extracts gene lists
 This directory contains subdirectories and scripts for processing FastQ files.
 
 #### GetReference
-Contains the `MaleLimitedEvo_Reference_Genome.sh` script, which downloads and indexes the reference genome files required for RNA-Seq analysis.
+Contains the `Get_Reference_Genome.sh` script, which downloads and indexes the reference genome files required for RNA-Seq analysis.
 
 #### Pipeline
 Contains the `MaleLimitedEvo_Pipeline.sh` script, which processes RNA-Seq data from FastQ files to .tsv files using the indexed reference genome.
@@ -48,7 +48,7 @@ This directory contains the resultant read count files generated from the RNA-Se
 
 1. **Download and Index the Reference Genome:**
    ```bash
-   sbatch FastQProcessing/GetReference/MaleLimitedEvo_Reference_Genome.sh
+   sbatch FastQProcessing/GetReference/Get_Reference_Genome.sh
    ```
 
 2. **Process RNA-Seq Data:**

@@ -4,18 +4,18 @@ This directory contains files and scripts related to the renaming of transcripto
 
 ## Files
 
-- `renameFiles.sh`: A bash script used to rename `.tsv` files based on specific components extracted from their original filenames.
+- `Get_Reference_Genome.sh`: A bash script used to rename `.tsv` files based on specific components extracted from their original filenames.
 - `readcount_filename_list.txt`: A list of the original filenames before renaming.
 - `newfilenames.txt`: A list of the new filenames after renaming.
 
 ## Usage
 
-To rename the files, run the `renameFiles.sh` script in the directory containing the `.tsv` files:
+To rename the files, run the `Get_Reference_Genome.sh` script in the directory containing the `.tsv` files:
 ```bash
-sbatch renameFiles.sh
+sbatch Get_Reference_Genome.sh
 ```
 
-## Description of `renameFiles.sh`
+## Description of `Get_Reference_Genome.sh`
 
 The script performs the following steps:
 
