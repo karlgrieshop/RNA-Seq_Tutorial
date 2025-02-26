@@ -9,7 +9,7 @@
 # 
 ###################################
 
-rm(list=ls()) # Clears the environment
+# rm(list=ls()) # Clears the environment
 
 # Packages
 ##########
@@ -34,12 +34,16 @@ if (!requireNamespace("dplyr", quietly = TRUE)) {
 if (!requireNamespace("ggplot2", quietly = TRUE)) {
   install.packages("ggplot2")
 }
+if (!requireNamespace("clipr", quietly = TRUE)) {
+  install.packages("clipr")
+}
 
 # Load necessary libraries
 library(DESeq2)
 library(vsn)
 library(dplyr)
 library(ggplot2)
+library(clipr)
 
 ##########
 
@@ -280,11 +284,14 @@ A.m.geno <- read.delim("where/you/saved/A.m.geno_raw.tsv")
 
 
 
-# For females, maybe just:
+# For females, just:
 A.f.geno.can <- A.f.geno[A.f.geno$Sig == "TRUE",]
+# Save to file
+write.table(A.f.geno.can, file = "~/where/you/want/to/save/A.f.geno_candidates.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
 
-# But if we do that for males... :-/ 
-A.m.geno.can <- A.m.geno[A.m.geno$Sig == "TRUE",]
+# But if we do that for males... 
+A.m.geno.can <- A.m.geno[A.m.geno$Sig == "TRUE",] # Unsatisfying :-/ 
+# Don't save that.
 
 
 
@@ -327,27 +334,73 @@ while(dim(Results.df[Results.df$Sig,])[1] < 350){
 droplevels(Results.df)
 dim(Results.df[Results.df$Sig,]) # ensure there is 350 here.
 
-# Save to file
-write.table(Results.df, file = "~/where/you/saved/A.m.geno_candidates.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
+# Take just those top 350
+A.m.geno.can <- Results.df[Results.df$Sig,]
+# Save it
+write.table(A.m.geno.can, file = "~/where/you/want/to/save/A.m.geno_candidates.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
 
 ##########
 
-# Load results
-A.f.geno <- read.delim("Results/A.f.geno_candidates.tsv")
-A.m.geno <- read.delim("Results/A.m.geno_candidates.tsv")
 
-# Combine results for experimental populations
-Exp.geno <- merge(A.m.geno, A.f.geno, by = "FlyBaseID", all = TRUE)
-colnames(Exp.geno) <- c("FlyBaseID", "A.m.exp_geno", "A.m.se_geno", "A.m.padj", "A.m.Sig", "A.m.TopSig", # Check order of these is correct
-                          "A.f.exp_geno", "A.f.se_geno", "A.f.padj", "A.f.Sig")
-Exp.geno <- Exp.geno %>% mutate(Sig = ifelse(!is.na(A.m.Sig) & A.m.Sig, TRUE,
-                                               ifelse(!is.na(A.f.Sig) & A.f.Sig, TRUE, 
-                                                      ifelse(is.na(A.m.Sig) & is.na(A.f.Sig), NA, FALSE)))) 
-Exp.geno <- Exp.geno[!is.na(Exp.geno$Sig),]
+# If you haven't already, load raw results 
+A.f.geno <- read.delim("where/you/saved/A.f.geno_raw.tsv")
+A.m.geno <- read.delim("where/you/saved/A.m.geno_raw.tsv")
+# Combine results for males and females populations (all genes, background set)
+Exp.geno.raw <- merge(A.m.geno, A.f.geno, by = "FlyBaseID", all = TRUE)
 
-# Only keep concordant changes (upregulated or downregulated on Red versus NR in both sexes)
-Exp.geno.con <- na.omit(Exp.geno[(Exp.geno$A.f.exp_geno > 0 & Exp.geno$A.m.exp_geno > 0) |
-                             (Exp.geno$A.f.exp_geno < 0 & Exp.geno$A.m.exp_geno < 0),])
+
+# If you haven't already, load candidate results
+A.f.geno.can <- read.delim("where/you/saved/A.f.geno_candidates.tsv")
+A.m.geno.can <- read.delim("where/you/saved/A.m.geno_candidates.tsv")
+
+# Combine the candidates for males and females (removing NAs)
+Exp.geno.can <- merge(A.m.geno.can, A.f.geno.can, by = "FlyBaseID", all = TRUE)
+colnames(Exp.geno.can) <- c("FlyBaseID", "A.m.exp_geno", "A.m.se_geno", "A.m.padj", "A.m.TopSig", "A.m.Sig", # Check order of these is correct
+                            "A.f.exp_geno", "A.f.se_geno", "A.f.padj", "A.f.Sig")
+Exp.geno.can <- Exp.geno.can %>% mutate(Sig = ifelse(!is.na(A.m.Sig) & A.m.Sig, TRUE,
+                                                     ifelse(!is.na(A.f.Sig) & A.f.Sig, TRUE, 
+                                                            ifelse(is.na(A.m.Sig) & is.na(A.f.Sig), NA, FALSE)))) 
+Exp.geno.can <- Exp.geno.can[!is.na(Exp.geno.can$Sig),]
 
 # Save to file
-write.table(Exp.geno, file = "~/where/you/want/to/save/All.geno_candidates.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
+write.table(Exp.geno.can, file = "~/where/you/want/to/save/All.geno_candidates.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
+
+
+
+# Combine the candidates for males and females (removing NAs)
+Exp.geno.can.overlap <- merge(A.m.geno.can, A.f.geno.can, by = "FlyBaseID", all = FALSE)
+
+
+
+
+### QUESTION 4 ###
+# 
+# Of the differentially expressed genes in males and females, only 40 overlap. 
+# Did male-limited selection cause a correlated change in female gene expression?
+# How did authors test this?
+# Hint: got to paper, ctl+f, "overlap"
+#
+##################
+
+
+
+
+##########
+#
+# GO enrichment for candidate differentially expressed genes
+# 
+##########
+
+# Target set
+write_clip(Exp.geno.can$FlyBaseID) 
+# Alternative target set
+write_clip(Exp.geno.can.overlap$FlyBaseID) 
+# Background set
+write_clip(Exp.geno.raw$FlyBaseID) 
+# Background set
+# These were used here: https://biit.cs.ut.ee/gprofiler/gost
+# Alternatively, use: https://bioinformatics.sdstate.edu/go/
+##########
+
+
+
