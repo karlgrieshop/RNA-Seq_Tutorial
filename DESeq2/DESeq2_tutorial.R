@@ -226,6 +226,9 @@ dim(Results.df[Results.df$Sig == TRUE, ]) # ... which should match this, correct
 
 ##########
 
+# Save the raw results (careful to name accordingly)
+write.table(Results.df, file = "~/where/you/want/to/save/A.f.geno_raw.tsv", sep = "\t", row.names = FALSE, col.names = TRUE)
+
 
 
 
@@ -367,9 +370,9 @@ write.table(Exp.geno.can, file = "~/where/you/want/to/save/All.geno_candidates.t
 
 
 
-# Combine the candidates for males and females (removing NAs)
-Exp.geno.can.overlap <- merge(A.m.geno.can, A.f.geno.can, by = "FlyBaseID", all = FALSE)
-
+# Combine the background for males and females (removing NAs)
+Exp.geno.background <- merge(A.m.geno, A.f.geno, by = "FlyBaseID", all = FALSE)
+Exp.geno.background <- Exp.geno.background[!is.na(Exp.geno.background$Sig),]
 
 
 
@@ -393,14 +396,21 @@ Exp.geno.can.overlap <- merge(A.m.geno.can, A.f.geno.can, by = "FlyBaseID", all 
 
 # Target set
 write_clip(Exp.geno.can$FlyBaseID) 
-# Alternative target set
-write_clip(Exp.geno.can.overlap$FlyBaseID) 
 # Background set
-write_clip(Exp.geno.raw$FlyBaseID) 
+write_clip(Exp.geno.background$FlyBaseID) 
 # Background set
 # These were used here: https://biit.cs.ut.ee/gprofiler/gost
 # Alternatively, use: https://bioinformatics.sdstate.edu/go/
 ##########
 
+
+
+
+### QUESTION 5 ###
+# 
+# Could you think of an alternative GO enrichment analysis on a different
+# set of candidate genes? Try it.
+#
+##################
 
 
