@@ -3,8 +3,8 @@
 #SBATCH --time=2-0
 #SBATCH --mem=20G
 #SBATCH --job-name=Get_Reference_Genome
-#SBATCH -o /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Output_Messages/Get_Reference_Genome.out
-#SBATCH -e /gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/Error_Messages/Get_Reference_Genome.err
+#SBATCH -o /gpfs/home/rpr23sxu/scratch/References/Output_Messages/Get_Reference_Genome.out
+#SBATCH -e /gpfs/home/rpr23sxu/scratch/References/Error_Messages/Get_Reference_Genome.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rpr23sxu@uea.ac.uk
 
@@ -22,10 +22,11 @@ module load bwa/0.7.17
 module load STAR/2.7.10a
 
 # Define output directory
-OUTPUT_DIR="/gpfs/home/rpr23sxu/Teaching/RNA-Seq_Tutorial/FastQProcessing/GetReference/References"
+OUTPUT_DIR="/gpfs/home/rpr23sxu/scratch/References/"
 REF_FILE="$OUTPUT_DIR/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa"
 REF_FILE_GZ="$REF_FILE.gz"
 GTF_FILE="$OUTPUT_DIR/Drosophila_melanogaster.BDGP6.28.102.gtf"
+GENOME_DIR="/gpfs/home/rpr23sxu/scratch/References/STAR"
 
 # Check if the reference genome file already exists
 if [ ! -f "$REF_FILE" ]; then
@@ -66,9 +67,10 @@ else
 fi
 
 # Check if STAR genome indices already exist
-if [ ! -d "${OUTPUT_DIR}/STAR" ]; then
-  mkdir -p "${OUTPUT_DIR}/STAR"
-  STAR --runThreadN 12 --runMode genomeGenerate --genomeSAindexNbases 12 --genomeDir "${OUTPUT_DIR}/STAR" --genomeFastaFiles "$REF_FILE" --sjdbGTFfile "$GTF_FILE"
+if [ ! -d "$GENOME_DIR" ]; then
+  mkdir -p "$GENOME_DIR"
+  STAR --runThreadN 12 --runMode genomeGenerate --genomeSAindexNbases 12 --genomeDir "$GENOME_DIR" --genomeFastaFiles "$REF_FILE" --sjdbGTFfile "$GTF_FILE"
 else
   echo "STAR genome indices already exist. Skipping STAR indexing."
 fi
+
