@@ -7,7 +7,7 @@
 #SBATCH -o /gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/ReadCounts/Output_Messages/MaleLimitedEvo_Pipeline-%a.out
 #SBATCH -e /gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/ReadCounts/Error_Messages/MaleLimitedEvo_Pipeline-%a.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=rpr23sxu@uea.ac.uk
+#SBATCH --mail-user= <your.email@address>
 
 # Load required modules
 module load python/anaconda/2024.06  # Load Anaconda module to enable Conda commands
