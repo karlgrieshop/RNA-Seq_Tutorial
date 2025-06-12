@@ -59,7 +59,7 @@ export PATH=/gpfs/home/rpr23sxu/gatk-4.2.6.1:$PATH
 GENOME_DIR="/gpfs/home/rpr23sxu/scratch/References/STAR"
 GENOME_FASTA="/gpfs/home/rpr23sxu/scratch/References/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa"
 GTF_FILE="/gpfs/home/rpr23sxu/scratch/References/Drosophila_melanogaster.BDGP6.28.102.gtf"
-FASTQ_DIR="/gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/test"
+FASTQ_DIR="/gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/FastQ/raw_data"
 OUTPUT_DIR="/gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/ReadCounts"
 
 # Ensure OUTPUT_DIR exists
