@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --array=0-35
+#SBATCH --array=0-23
 #SBATCH --time=5-0
 #SBATCH --mem=80G
 #SBATCH --cpus-per-task=12
@@ -8,6 +8,17 @@
 #SBATCH -e /gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/ReadCounts/Error_Messages/MaleLimitedEvo_Pipeline-%a.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user= <your.email@address>
+
+
+# ----------------------------------------------------------------------
+# Conda environment setup
+# To recreate the RNA-Seq_env conda environment used by this script:
+#   conda env create -f RNA-Seq_env.yml
+# or, using the explicit package list:
+#   conda create --name RNA-Seq_env --file RNA-Seq_env.txt
+# Make sure RNA-Seq_env.yml and RNA-Seq_env.txt are present in this directory.
+# ----------------------------------------------------------------------
+
 
 # Load required modules
 module load python/anaconda/2024.06  # Load Anaconda module to enable Conda commands
@@ -107,3 +118,10 @@ python -m HTSeq.scripts.count -s no --nonunique none --format bam --secondary-al
 
 # Deactivate Conda environment
 conda deactivate
+
+# Optional: Cleanup intermediate BAM files (keep only the final sorted BAM and .tsv)
+rm -f ${OUTPUT_DIR}/${SAMPLE}Aligned.out.bam
+rm -f ${OUTPUT_DIR}/${SAMPLE}_unmapped.bam
+rm -f ${OUTPUT_DIR}/${SAMPLE}_unmapped_query.bam
+rm -f ${OUTPUT_DIR}/${SAMPLE}_merged.bam
+rm -f ${OUTPUT_DIR}/${SAMPLE}_dedup.bam
