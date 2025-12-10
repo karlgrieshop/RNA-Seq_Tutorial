@@ -8,7 +8,7 @@ This tutorial is modified from select subdirectories of the public repository [M
 In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromosome 2 was used to force a “Red” pool of genetically variable chromosomes through exclusive father-to-son inheritance, while a complimentary pool of “NonRed” chromosomes was inherited primarily from mothers to daughters. After 100 generations, males carrying a Red chromosome copy exhibited greater mating success than males with only NonRed chromosomes, consistent with the accumulation of male-benefit/female-detriment sexually antagonistic alleles in the Red pool relative to NonRed. We analysed differentially expressed genes between flies with and without Red chromosomes.
 
 ## Tutorial overview
-This directory contains materials for Session 10 of the Data Science and Bioinformatics module at the University of East Anglia. The focus of this session is to:
+This directory contains materials for Session 5 of the Data Science and Bioinformatics module at the University of East Anglia. The focus of this session is to:
 1. Document how RNA-Seq FastQ files were processed to read count .tsv files.
 2. Demonstrate how to analyse read counts using DESeq2 in R.
 
