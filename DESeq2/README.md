@@ -3,7 +3,7 @@
 ## This is local work - Open the R script locally and follow it
 It's best and easiest to run R Studio locally, and the .tsv files are small enough to download to your local machine. 
 
-### If you don't have the TSV read-count files locally already, look at RNA-Seq_Tutorial/ReadCounts/README.md to see where to find the TSV files. Then, use scp (secure shell copy) to get the files on your local machine, like so:
+### If you don't have the TSV read-count files locally already, look at RNA-Seq_Tutorial/ReadCounts/README.md to see where to find the TSV files. Then, use `scp` to get the files on your local machine, like so:
 - Open a local terminal session
 ```bash
 cd /<where_you_want_them/>
