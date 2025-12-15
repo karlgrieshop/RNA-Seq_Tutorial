@@ -10,4 +10,4 @@ interactive-bio-ds
 cp /gpfs/data/BIO-DSB/Session5/RNA-Seq_Tutorial/ReadCounts/*.tsv ~/scratch/<where_you_wish>
 ```
 
-**If you do not have access to /gpfs/data/BIO-DSB/Session5/** you can apply the code in Pipeline/ to the relevant original fastq files publicly available on the [sequence read archive (SRA)](https://www.ncbi.nlm.nih.gov/sra/?term=PRJNA1184789). **Note** that this tutorial excludes the Control samples in the SRA from the Grieshop et al. (2025) (PRJNA1184789) (job array is for 24 files, not 36).
+**If you do not have access to /gpfs/data/BIO-DSB/Session5/** you can apply the code in Pipeline/ to the relevant original fastq files publicly available on the [sequence read archive (SRA)](https://www.ncbi.nlm.nih.gov/sra/?term=PRJNA1184789). **Note** that this tutorial excludes the Control samples in the SRA from the Grieshop *et al*. (2025) (PRJNA1184789) (job array is for 24 files, not 36).
