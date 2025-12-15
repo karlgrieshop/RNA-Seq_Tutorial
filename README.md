@@ -1,43 +1,46 @@
 # RNA-Seq_Tutorial
-STAR | HTSeq | DESeq2 workflow for transcriptomics tutorial for Data Science and Bioinformatics (UEA, BIO7051B)
+STAR | HTSeq | DESeq2 workflow for transcriptomics tutorial for Data Science and Bioinformatics (UEA, BIO-7051B)
 
-## For Data Science and Bioinformatics students (BIO-7051B)
-
-### Prior to Session5
-
-- Try to run the /FastQProcessing/Pipeline (*Steps 1-5 in listed below*) including setting up the conda environment as described in the FastQ-to-ReadCounts_Pipeline.sh.
-
-### During Session5
-- If you haven't had a chance to do that, **no worries,**. I've provided the .tsv read-count files that you would have generated (see RNA-Seq_Tutorial/ReadCounts/README.md). *Skip to Steps 6-7*.
+---
 
 ## Origin
 This tutorial is modified from select subdirectories of the public repository [MaleLimitedEvo](https://github.com/mchlleliu/MaleLimitedEvo), which accompanies the publication Grieshop et al. (2025) in *Molecular Biology and Evolution (MBE)*. It contains scripts and pipelines for processing RNA-Seq data, including extracting gene lists, downloading reference genomes, renaming files, and generating read-count TSV files for downstream analysis using DESeq2 in R.
 
+---
+
 ## Background
 In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromosome 2 was used to force a “Red” pool of genetically variable chromosomes through exclusive father-to-son inheritance, while a complimentary pool of “NonRed” chromosomes was inherited primarily from mothers to daughters. After 100 generations, males carrying a Red chromosome copy exhibited greater mating success than males with only NonRed chromosomes, consistent with the accumulation of male-benefit/female-detriment sexually antagonistic alleles in the Red pool relative to NonRed. We analysed differentially expressed genes between flies with and without Red chromosomes.
 
-## Tutorial overview
-This directory contains materials for Session5 of the Data Science and Bioinformatics (BIO-7051B). The focus of this session is to:
-- **Steps 1-5 below** are to be done prior to Session5 (but not essential). They document how RNA-Seq FastQ files were processed to read-count TSV files.
-- **Steps 6-7 below** are for during Session5 (the essential tutorial). It demonstrates how to analyse read counts using DESeq2 in R (and let you explore that further).
+---
+
+## Learning objectives
+- Understand the pipeline steps to go from FastQ → read counts (STAR | HTSeq).
+- Run basic DESeq2 workflows in R and interpret simple differential expression results.
+
+---
+
+## Two options
+
+**Advanced (*prior* to Session5)**
+- Try to run the /FastQProcessing/Pipeline (*Steps 1-5 below*) including setting up the conda environment as described in the FastQ-to-ReadCounts_Pipeline.sh.
+
+**All else (*during* Session5)**
+- If you haven't generated your own .tsv files, jump to Step 6.
+
+---
 
 ## A recommended workflow
 - Fork the repo to your own GitHub account,
 - Clone your forked copy of the repo locally, 
 - If jumping into **Step 6:** 
   - `scp` the TSV files from the HPC to your local workspace (see RNA-Seq_Tutorial/ReadCounts/).
-- If starting from **Step 1:**
-  - Open the crucial elements of cloned repo and modify them to run from your own HPC account,
-  - Push the changes to GitHub (see [Bioinformatics_Onboarding/GitHub_tutorial](https://github.com/karlgrieshop/Bioinformatics_Onboarding/tree/main/GitHub_tutorial)),
-    - Quick reminder: `git add --all` then `git commit -m 'a note'` then `git push origin main` 
-  - Then log onto the HPC and navigate to your scratch directory
-  - Clone the updated copy of your repo to your HPC ~/scratch/ directory,
-    - Quick reminder: `git clone <SSH link>`
-  - And for changes after cloning, use:
-    - `git pull --rebase origin main`
-  - This basically uses GitHub to mirror your local and HPC workspaces, backing up your progress along the way. 
+- If starting from **Step 1:** a recommended workflow:
+  - (As in BED_overlap) `fork` → `clone` your fork locally → Edit files → `push` changes → `clone` to HPC → run scripts.
+  - Alternatives: `clone` to HPC → Edit directly in HCP (vim or nano).
 
-## Contents
+---
+
+## Steps
 
 ### 1. `FastQProcessing/Pipeline/`
 - **Scripts**:  
@@ -84,19 +87,16 @@ This directory contains materials for Session5 of the Data Science and Bioinform
 - **Purpose**: Contains the read count files generated from `Pipeline/` for the analysis documented in `DESeq2/DESeq2_tutorial.R`.
 - **Notes**: See `tsvFileRenaming/`.
 
-## Software Requirements (for Steps 1-5)
-- **STAR**: v2.7.9a or later
-- **GATK**: v4.2.3.0-1 or later
-- **HTSeq**: v0.13.5 or later
-- **SLURM**: Required for job scheduling on an HPC
-- **rename**: Required for renaming files in `renameFASTQfiles.sh`
-
 ## Reference Genome and Annotation
-- **Reference Genome**: Drosophila melanogaster BDGP6.28, release 102
+- **Reference Genome**: *Drosophila melanogaster* BDGP6.28, release 102
 - **Annotation File**: GTF file from the same release
 
 ## Notes
 - Some scripts are designed to run on an HPC using SLURM. Modify the SLURM directives as needed for your system.
 
-## Contact
-For questions or issues, contact [Karl Grieshop](https://github.com/karlgrieshop).
+## Contact & Questions
+For questions about this tutorial, contact:
+Karl Grieshop  
+School of Biological Sciences  
+University of East Anglia  
+k.grieshop@uea.ac.uk
