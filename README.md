@@ -19,9 +19,9 @@ In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromos
 
 ---
 
-## Steps
+## Two paths: Step 1&2, or just Step 2
 
-**Step 1 (optional, advanced, HPC, begin *prior* to Session5)**
+**Step 1 (optional, advanced, begin *prior* to Session5)**
 - Try to run the full /Pipeline 
 - Requires all elements of this repo (*listed in order of execution under `Contents`, below*).
 - A recommended workflow:
@@ -31,8 +31,8 @@ In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromos
    - Work entirely on the HPC: `clone` to HPC → Edit directly in HCP (using `vim` or `nano`).
 - Once you have TSV read-count files, move onto Option 2 (next).
 
-**Step 2 (required, local, R, complete *during* Session5)**
-- If you skipped Step 1, you can `scp` the TSV read-count files from the HPC to your local workspace (see `ReadCounts/`).
+**Step 2 (required, beginner, begin *during* Session5)**
+- If you skipped Step 1, you can `scp` the TSV read-count files from the HPC to your local workspace (see `ReadCounts/`), and 
 - Analyse read-counts in R locally `DESeq2/`.
 
 ---
@@ -78,6 +78,27 @@ In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromos
 - **Execution**: DESeq2 in R, using the data in `ReadCounts/` prepared using the `Pipeline/` scripts.
 - **Output**: Results of differential gene expression analysis.
 - **Notes**: You will run DESeq2 locally in R Studio, so you will need to copy the .tsv files somewhere locally and import them into R.
+
+### 7. `Plotting/`
+- **Script**: `DE_Plotting_data.R`, `DE_SBGEdist_Fig2.S8.S9.R`, `Mishra_et.al_SBGE.R`
+- **Data**: `DifferentialGeneExpression.whole.bodies.tsv`
+- **Purpose**: *NOT* a core component of the tutorial. Starting material for Group Project idea. Incomplete code and data for visualising results.
+- **Execution**:  data wrangling and ggplot in R, using outputs from DESeq2 results table.
+- **Output**: Results figures.
+
+---
+
+## Group Project ideas
+
+Take this further in some way or ways (remember: chief marking criteria for group project is the reproducibility):
+- **Pipeline work:** Convert the FastQProcessing/Pipeline to a [Nextflow pipeline](https://www.nextflow.io/rna-seq-pipeline.html) or a [Snakemake pipeline](https://snakemake.github.io/snakemake-workflow-catalog/docs/workflows/snakemake-workflows/rna-seq-star-deseq2.html).
+  - Take it further, compare outputs (e.g. are read-count TSV files correlated to those of FastQProcessing/Pipeline?).
+  - Take it further, compare analysis (e.g. do different pipelines result in different expression results?).
+- **Outliers:** Remove outlier sample. Look at PCA among samples in R. Do any samples stand out? If so, try to exclude that/those sample(s) from the analysis and re-run. Compare results. Did they change?
+- **Data Visualisation:** `Plotting/` contains incomplete starting material to get you started with some data visualisation ideas for how to represent the results. See plots from Grieshop *et al*. 2025 for inspiration, or to see what they haven't done. 
+- **Statistical:** Analyse the chromosomal distribution of differentially expressed genes. Are there more on X, 2 or 3 than expected by chance? Does this make sense? Recall the focal manipulated chromsome of the experiment was Chromosome 2.  
+
+---
 
 ## Contact & Questions
 For questions about this tutorial, contact:
