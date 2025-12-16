@@ -1,5 +1,11 @@
-# RNA-Seq_Tutorial
-STAR | HTSeq | DESeq2 workflow for transcriptomics tutorial for Data Science and Bioinformatics (UEA, BIO-7051B)
+# RNA-Seq_Tutorial for Data Science and Bioinformatics (BIO-7051B) Session 5
+STAR | HTSeq | DESeq2 workflow 
+
+---
+
+## Learning objectives
+- Understand the pipeline steps to go from FastQ → read counts (STAR | HTSeq).
+- Run basic DESeq2 workflows in R and interpret simple differential expression results.
 
 ---
 
@@ -10,12 +16,6 @@ This tutorial is modified from select subdirectories of the public repository [M
 
 ## Background
 In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromosome 2 was used to force a “Red” pool of genetically variable chromosomes through exclusive father-to-son inheritance, while a complimentary pool of “NonRed” chromosomes was inherited primarily from mothers to daughters. After 100 generations, males carrying a Red chromosome copy exhibited greater mating success than males with only NonRed chromosomes, consistent with the accumulation of male-benefit/female-detriment sexually antagonistic alleles in the Red pool relative to NonRed. We analysed differentially expressed genes between flies with and without Red chromosomes.
-
----
-
-## Learning objectives
-- Understand the pipeline steps to go from FastQ → read counts (STAR | HTSeq).
-- Run basic DESeq2 workflows in R and interpret simple differential expression results.
 
 ---
 
