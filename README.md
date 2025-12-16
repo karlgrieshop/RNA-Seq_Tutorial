@@ -1,4 +1,4 @@
-# RNA-Seq_Tutorial for Data Science and Bioinformatics (BIO-7051B) Session 5
+# RNA-Seq_Tutorial - Data Science and Bioinformatics (BIO-7051B) Session 5
 STAR | HTSeq | DESeq2 workflow 
 
 ---
