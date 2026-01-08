@@ -97,6 +97,7 @@ Take this further in some way or ways (remember: chief marking criteria for grou
 - **Outliers:** Remove outlier sample. Look at PCA among samples in R. Do any samples stand out? If so, try to exclude that/those sample(s) from the analysis and re-run. Compare results. Did they change?
 - **Data Visualisation:** `Plotting/` contains incomplete starting material to get you started with some data visualisation ideas for how to represent the results. See plots from Grieshop *et al*. 2025 for inspiration, or to see what they haven't done. 
 - **Statistical:** Analyse the chromosomal distribution of differentially expressed genes. Are there more on X, 2 or 3 than expected by chance? Does this make sense? Recall the focal manipulated chromsome of the experiment was Chromosome 2.  
+- **Polar Bears:** Try analysing real RNA‑seq data from polar bears using the raw count files and R notebooks available [here](https://github.com/alicegodden/polarbear). Link to paper [here](https://link.springer.com/article/10.1186/s13100-025-00387-4). You can run basic models, compare groups, and explore how gene and TE expression change across different environments. Try generating your own visualisations.
 
 ---
 
