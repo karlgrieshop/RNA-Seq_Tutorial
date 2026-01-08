@@ -28,7 +28,7 @@ In six replicate populations of 1000 flies, a dominant marker (DsRed) on Chromos
   - (As in BED_overlap) `fork` the repo → `clone` it locally → Edit files → `push` changes → `clone` or `pull` to HPC workspace → run scripts.
   - Alternatives: 
    - `scp` essential local changes to HPC
-   - Work entirely on the HPC: `clone` to HPC → Edit directly in HCP (using `vim` or `nano`).
+   - Work entirely on the HPC: `clone` to HPC → Edit directly in HPC (using `vim` or `nano`).
 - Once you have TSV read-count files, move onto Option 2 (next).
 
 **Step 2 (required, beginner, begin *during* Session5)**
