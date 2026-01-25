@@ -16,7 +16,8 @@
 #   conda env create -f RNA-Seq_env.yml
 # or, using the explicit package list:
 #   conda create --name RNA-Seq_env --file RNA-Seq_env.txt
-# Make sure RNA-Seq_env.yml and RNA-Seq_env.txt are present in this directory.
+# To check if it's working, activate with:
+#   conda activate RNA-Seq_env
 # ----------------------------------------------------------------------
 
 
