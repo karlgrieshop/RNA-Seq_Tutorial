@@ -7,7 +7,7 @@
 #SBATCH -o /gpfs/home/rpr23sxu/Teaching/MaleLimitedEvo/FastQProcessing/RenamingFiles/Output_Messages/Rename_Files.out
 #SBATCH -e /gpfs/home/rpr23sxu/Teaching/MaleLimitedEvo/FastQProcessing/RenamingFiles/Error_Messages/Rename_Files.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=rpr23sxu@uea.ac.uk
+#SBATCH --mail-user=<abc12xyz>@uea.ac.uk
 
 set -e
 # Exit immediately if a command exits with a non-zero status

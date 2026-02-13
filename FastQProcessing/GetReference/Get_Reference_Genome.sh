@@ -6,7 +6,7 @@
 #SBATCH -o /gpfs/home/rpr23sxu/scratch/References/Output_Messages/Get_Reference_Genome.out
 #SBATCH -e /gpfs/home/rpr23sxu/scratch/References/Error_Messages/Get_Reference_Genome.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=rpr23sxu@uea.ac.uk
+#SBATCH --mail-user=<abc12xyz>@uea.ac.uk
 
 # Required Output Directories:
 # - /Output_Messages

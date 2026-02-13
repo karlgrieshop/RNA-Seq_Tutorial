@@ -6,7 +6,7 @@
 #SBATCH -o /gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/GeneLists/Output_Messages/Extract_Genes.out
 #SBATCH -e /gpfs/home/rpr23sxu/scratch/Data/MaleLimitedEvo/GeneLists/Error_Messages/Extract_Genes.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=rpr23sxu@uea.ac.uk
+#SBATCH --mail-user=<abc12xyz>@uea.ac.uk
 
 # Define the GTF file path
 GTF_FILE="/gpfs/home/rpr23sxu/scratch/References/Drosophila_melanogaster.BDGP6.28.102.gtf"
