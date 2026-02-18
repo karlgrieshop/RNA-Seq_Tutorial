@@ -8,8 +8,9 @@ It's best and easiest to run R Studio locally, and the .tsv files are small enou
 ```bash
 cd /<where_you_want_them_locally>/
 # `scp` is secure copy protocol, and allows you to `cp` between HPC and local workspaces:
-scp abc12xyz@hali.uea.ac.uk:~/<where_put_them_on_HPC/*.tsv .
-# Note `.` is meaningful, remember? Alternatively, specify /<where_you_want_them_locally>/
+scp 'abc12xyz@hali.uea.ac.uk:~/<where_put_them_on_HPC/*.tsv' .
+# Note that the little quotes ' ' around the first part of scp command mask the "*" from your local shell. 
+# Note "." is meaningful, remember? Alternatively, specify /<where_you_want_them_locally>/
 # Enter your UEA HPC password when prompted,
 # Wait for download to complete before closing shell.
 ```
